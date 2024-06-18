@@ -1,0 +1,31 @@
+from circuit import Circuit
+
+sb256 = sbits.get_type(256)
+
+# # Party 0 is
+n_parties = 4
+dealer_id = 0
+
+x1 = sint.get_input_from(1)
+x2 = sint.get_input_from(2)
+x3 = sint.get_input_from(3)
+x4 = sint.get_input_from(3)
+x1.reveal_print_hex()
+x2.reveal_print_hex()
+x3.reveal_print_hex()
+x4.reveal_print_hex()
+x = x1.bit_xor(x2).bit_xor(x3).bit_xor(x4)
+
+y = sint.get_input_from(dealer_id)
+y.reveal_print_hex()
+
+# concatenate
+data = sbitvec.from_vec(x.v + y.v)
+data.reveal_print_hex()
+
+iv = sb256(0x0)
+sha256 = Circuit('sha256')
+hash = sha256(data, sbitvec([iv]))
+# hash = sha256(z, sbitvec([iv]))
+print_ln('output:')
+hash.reveal_print_hex()
