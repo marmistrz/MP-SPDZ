@@ -9,7 +9,7 @@ dealer_id = 0
 x1 = sint.get_input_from(1)
 x2 = sint.get_input_from(2)
 x3 = sint.get_input_from(3)
-x4 = sint.get_input_from(3)
+x4 = sint.get_input_from(4)
 x1.reveal_print_hex()
 x2.reveal_print_hex()
 x3.reveal_print_hex()
